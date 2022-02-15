@@ -1,0 +1,6 @@
+% apply fft on an image:
+A=imread("image1.png");
+B=fftshift(fft2(A));  %perform fft and shift the dc comp to center (Frequancy response)
+B=abs(B);  %for display purposes we find the |B| (Magnitude);
+B=log(1+B);  % to stertch the values and be able to display the spectrum
+imshow(B/max(B(:))) % to display the transformed image
