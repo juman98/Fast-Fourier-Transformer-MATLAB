@@ -1,4 +1,3 @@
-read and fo dft on img:
 A=imread("image1.png");
 B=fftshift(fft2(A));
 % butterworth low pass filter H: 
