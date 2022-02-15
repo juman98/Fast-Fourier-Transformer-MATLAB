@@ -1,0 +1,22 @@
+A=imread("image1.png");
+B=fftshift(fft2(A));
+% gaussian low pass filter H: 
+s=size(A);
+H=zeros(s(1),s(2)); %a matrix of zeros with the image size;
+D0= x ;% asked in the question
+for i=1 : s(1)
+    for j=1 : s(2)
+        D=(i-s(1)/2 + 1)^2 + (j-s(2)/2 + 1)^2; %Distance D for pixels from the center 
+        H(i,j)= exp(-D/(2*D0*D0)); %it must be ^2*n but assuming n=1 
+    end
+end
+% convolve the transform with the filter 
+C=H.*B;
+% shift the filtered transform
+C=fftshift(C);
+%find the inverse to get the transformed pic
+A2=ifft2(C);
+%to display image:
+A2=abs(A2);
+A2=log(1+A2);
+imshow(I/max(A2(:)));
