@@ -1,4 +1,4 @@
-A=imread("");
+A=imread("image1.png");
 B=fftshift(fft2(A));
 % butterworth high pass filter H: 
 s=size(A);
